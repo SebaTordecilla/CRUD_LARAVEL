@@ -23,12 +23,23 @@
                     <tr>
                         <td>{{ $detail->name }}</td>
                         <td>{{ $detail->due }}</td>
-                        <td></td>
+                        <td>
+                            <a href="{{ route('client.edit', $detail) }}" class="btn btn-warning">Editar</a>
+                            <a href="{{ route('client.destroy', $detail) }}" class="btn btn-danger">Eliminar</a>
+                        </td>
                     </tr>
                 @empty
+                    <tr>
+                        <td colspan="3">NO hay registros</td>
+                    </tr>
                 @endforelse
 
             </tbody>
         </table>
+        @if ($clients->count())
+            {{ $clients->links() }}
+        @endif
+
+
     </div>
 @endsection
